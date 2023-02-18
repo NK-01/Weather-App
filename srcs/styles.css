@@ -1,5 +1,5 @@
 * {
-  font-family: "Roboto", sans-serif;
+  font-family: "Poppins", sans-serif;
   margin: 0;
   padding: 0;
 }
@@ -10,15 +10,21 @@ ul {
   list-style-type: none;
 }
 
+#city-name {
+  font-size: 22px;
+  font-weight: 400;
+}
+
 #search-bar {
   background: #fff;
   border: 1px solid #000;
   border-radius: 15px;
-  width: 245px;
+  width: 250px;
   line-height: 28px;
   padding-left: 8px;
-  margin-left: 28px;
   margin-top: 18px;
+  margin-left: 28px;
+  margin-bottom: 8px;
 }
 
 #search-bar input {
@@ -32,9 +38,22 @@ ul {
 #search-bar i {
   color: rgb(29, 88, 214);
 }
+
+#temperature {
+  font-size: 52px;
+  position: relative;
+  top: 13px;
+  margin-left: -5px;
+}
+
 .container {
   margin-top: auto;
   margin-right: auto;
+}
+
+.day-time {
+  font-size: 14px;
+  opacity: 0.8;
 }
 
 .main-app {
@@ -49,4 +68,8 @@ ul {
   margin-left: auto;
   margin-right: auto;
   margin-top: 100px;
+}
+
+.weather-overview {
+  margin-left: 8px;
 }
