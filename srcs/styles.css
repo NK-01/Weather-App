@@ -15,35 +15,17 @@ ul {
   font-weight: 400;
 }
 
-#search-bar {
-  background: #fff;
-  border: 1px solid #000;
-  border-radius: 15px;
-  width: 250px;
-  line-height: 28px;
-  padding-left: 8px;
-  margin-top: 18px;
-  margin-left: 28px;
-  margin-bottom: 8px;
-}
-
-#search-bar input {
-  border: none;
-  outline: none;
-  width: 200px;
-  line-height: 21px;
-  padding-bottom: 5px;
-}
-
-#search-bar i {
-  color: rgb(29, 88, 214);
-}
-
 #temperature {
   font-size: 52px;
   position: relative;
   top: 13px;
   margin-left: -5px;
+}
+
+#celcius,
+#fahrenheit {
+  color: #000;
+  text-decoration: none;
 }
 
 .container {
@@ -52,7 +34,7 @@ ul {
 }
 
 .day-time {
-  font-size: 14px;
+  font-size: 15px;
   opacity: 0.8;
 }
 
@@ -60,6 +42,31 @@ ul {
   border: 2px solid rgb(148, 148, 148, 0.3);
   border-radius: 5px;
   box-shadow: 2px 2px 10px rgb(202, 202, 202, 0.7);
+}
+
+.search-bar {
+  background: #fff;
+  border: 1px solid #000;
+  border-radius: 18px;
+  width: 250px;
+  line-height: 28px;
+  padding-left: 8px;
+  margin-top: 18px;
+  margin-left: 28px;
+  margin-bottom: 8px;
+}
+
+.search-bar input {
+  border: none;
+  outline: none;
+  width: 200px;
+  line-height: 21px;
+  padding-bottom: 5px;
+}
+
+.search-bar i {
+  padding-top: 8px;
+  color: rgb(29, 88, 214);
 }
 
 .weather-app-wrapper {
@@ -72,4 +79,33 @@ ul {
 
 .weather-overview {
   margin-left: 8px;
+}
+
+.weather-info-layout {
+  margin-bottom: 12px;
+}
+
+.tempearture-units {
+  font-size: 18px;
+  position: relative;
+  top: -12px;
+}
+
+.inactive {
+  opacity: 0.4;
+}
+
+.github-code-link {
+  margin-top: 5px;
+  font-size: 14px;
+}
+
+.other-weather-info-heading {
+  font-weight: 500;
+  font-size: 14px;
+}
+
+.other-weather-info-heading-value {
+  font-size: 13px;
+  opacity: 0.9;
 }
