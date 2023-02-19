@@ -15,10 +15,10 @@ ul {
   font-weight: 400;
 }
 
-#temperature {
+#current-temperature {
   font-size: 52px;
   position: relative;
-  top: 13px;
+  top: 15px;
   margin-left: -5px;
 }
 
@@ -28,6 +28,11 @@ ul {
   text-decoration: none;
 }
 
+#weather-icon {
+  width: 69px;
+  height: 69px;
+  margin-left: 6px;
+}
 .container {
   margin-top: auto;
   margin-right: auto;

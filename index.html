@@ -22,6 +22,7 @@
       src="https://kit.fontawesome.com/826048027b.js"
       crossorigin="anonymous"
     ></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios@1.1.2/dist/axios.min.js"></script>
   </head>
   <body>
     <div class="container">
@@ -52,9 +53,9 @@
             <div class="col-6">
               <img
                 id="weather-icon"
-                src="http://openweathermap.org/img/wn/02d@2x.png"
+                src="http://shecodes-assets.s3.amazonaws.com/api/weather/icons/clear-sky-night.png"
               />
-              <span id="temperature">28</span>
+              <span id="current-temperature">28</span>
               <span class="tempearture-units"
                 ><a href="#" id="celcius">°C</a>|<a
                   href="#"
@@ -67,9 +68,13 @@
             <div class="col-3">
               <ul class="other-weather-info">
                 <li>
-                  <span class="other-weather-info-heading">Humidity</span><br />
+                  <span class="other-weather-info-heading">Real Feel</span
+                  ><br />
                   <span class="other-weather-info-heading-value"
-                    ><span id="humidity">80</span>%</span
+                    ><span id="real-feel">23</span>°<span
+                      id="real-feel-temperature-degree"
+                      >C</span
+                    ></span
                   >
                 </li>
                 <li>
@@ -84,15 +89,15 @@
             <div class="col-3">
               <ul class="other-weather-info">
                 <li>
-                  <span class="other-weather-info-heading">Pressure</span><br />
+                  <span class="other-weather-info-heading">Humidity</span><br />
                   <span class="other-weather-info-heading-value"
-                    ><span id="pressure">1013</span>mbar</span
+                    ><span id="humidity">80</span>%</span
                   >
                 </li>
                 <li>
-                  <span class="other-weather-info-heading">UV Index</span><br />
+                  <span class="other-weather-info-heading">Pressure</span><br />
                   <span class="other-weather-info-heading-value"
-                    ><span id="uv-index">0</span>
+                    ><span id="pressure">1013</span>mbar
                   </span>
                 </li>
               </ul>
