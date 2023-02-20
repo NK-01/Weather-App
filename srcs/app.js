@@ -24,16 +24,20 @@ function displayWeatherInformations(response) {
   let windSpeedElement = document.querySelector("#wind-speed");
   let pressureElement = document.querySelector("#pressure");
   let weatherConditionIcon = document.querySelector("#weather-icon");
+  let weatherConditionElement = document.querySelector("#weather-condition");
+
   let currentTemperature = Math.round(response.data.main.temp);
   let realFeel = Math.round(response.data.main.feels_like);
   let humidity = Math.round(response.data.main.humidity);
   let pressure = Math.round(response.data.main.pressure);
   let windSpeed = Math.round(response.data.wind.speed);
   let weatherIcon = response.data.weather[0].icon;
+  let weatherCondition = response.data.weather[0].description;
   weatherConditionIcon.setAttribute(
     `src`,
     `http://openweathermap.org/img/wn/${weatherIcon}@2x.png`
   );
+  weatherConditionElement.innerHTML = weatherCondition;
   currentTemperatureElement.innerHTML = currentTemperature;
   realFeelElement.innerHTML = realFeel;
   humidityElement.innerHTML = humidity;

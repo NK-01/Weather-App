@@ -28,6 +28,10 @@ ul {
   text-decoration: none;
 }
 
+#weather-condition {
+  text-transform: capitalize;
+}
+
 .container {
   margin-top: auto;
   margin-right: auto;
