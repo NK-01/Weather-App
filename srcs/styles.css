@@ -16,10 +16,10 @@ ul {
 }
 
 #current-temperature {
-  font-size: 52px;
+  font-size: 54px;
   position: relative;
-  top: 15px;
-  margin-left: -5px;
+  top: 16px;
+  margin-left: -7px;
 }
 
 #celcius,
@@ -28,11 +28,6 @@ ul {
   text-decoration: none;
 }
 
-#weather-icon {
-  width: 69px;
-  height: 69px;
-  margin-left: 6px;
-}
 .container {
   margin-top: auto;
   margin-right: auto;
@@ -94,6 +89,7 @@ ul {
   font-size: 18px;
   position: relative;
   top: -12px;
+  margin-left: -4px;
 }
 
 .inactive {

@@ -15,6 +15,7 @@ function formatCityName(city) {
 }
 
 function displayWeatherInformations(response) {
+  console.log(response);
   let currentTemperatureElement = document.querySelector(
     "#current-temperature"
   );
@@ -22,12 +23,17 @@ function displayWeatherInformations(response) {
   let humidityElement = document.querySelector("#humidity");
   let windSpeedElement = document.querySelector("#wind-speed");
   let pressureElement = document.querySelector("#pressure");
-
+  let weatherConditionIcon = document.querySelector("#weather-icon");
   let currentTemperature = Math.round(response.data.main.temp);
   let realFeel = Math.round(response.data.main.feels_like);
   let humidity = Math.round(response.data.main.humidity);
   let pressure = Math.round(response.data.main.pressure);
   let windSpeed = Math.round(response.data.wind.speed);
+  let weatherIcon = response.data.weather[0].icon;
+  weatherConditionIcon.setAttribute(
+    `src`,
+    `http://openweathermap.org/img/wn/${weatherIcon}@2x.png`
+  );
   currentTemperatureElement.innerHTML = currentTemperature;
   realFeelElement.innerHTML = realFeel;
   humidityElement.innerHTML = humidity;
