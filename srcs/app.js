@@ -47,7 +47,6 @@ function displayTimeDay(response) {
 }
 
 function displayWeatherInformations(response) {
-  console.log(response);
   displayTimeDay(response);
   let currentTemperatureElement = document.querySelector(
     "#current-temperature"
@@ -81,22 +80,25 @@ function displayWeatherInformations(response) {
   pressureElement.innerHTML = pressure;
 }
 
-function search(event) {
-  event.preventDefault();
+function search(city) {
   let temperatureUnits = "metric";
-  let city = document.querySelector("#search-city");
-  city.value = formatCityName(city.value);
-
-  if (city.value) {
+  if (city) {
     let displayCityName = document.querySelector("#city-name");
-    displayCityName.innerHTML = city.value;
+    displayCityName.innerHTML = city;
 
     let apiKey = "b20ecfd3dab44a1228a1285e56521d52";
-    let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city.value}&appid=${apiKey}&units=${temperatureUnits}`;
+    let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=${temperatureUnits}`;
     axios.get(apiUrl).then(displayWeatherInformations);
   } else {
     alert("Please enter a city name");
   }
+}
+
+function handleSearchCitySubmit(event) {
+  event.preventDefault();
+  let city = document.querySelector("#search-city");
+  city.value = formatCityName(city.value);
+  search(city.value);
 }
 
 function displayCelciusTemperature(event) {
@@ -141,7 +143,7 @@ function displayFahrenheitTemperature(event) {
 }
 
 let searchForm = document.querySelector(".search-bar");
-searchForm.addEventListener("submit", search);
+searchForm.addEventListener("submit", handleSearchCitySubmit);
 
 let celciusTemperature = null;
 let celciusElement = document.querySelector("#celcius");
@@ -150,3 +152,5 @@ celciusElement.addEventListener("click", displayCelciusTemperature);
 let realFeelCelciusTemperature = null;
 let fahrenheitElement = document.querySelector("#fahrenheit");
 fahrenheitElement.addEventListener("click", displayFahrenheitTemperature);
+
+search("New Delhi");
