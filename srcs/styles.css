@@ -20,6 +20,7 @@ ul {
   position: relative;
   top: 16px;
   margin-left: -7px;
+  cursor: default;
 }
 
 #celcius,
@@ -96,8 +97,13 @@ ul {
   margin-left: -4px;
 }
 
+.active {
+  cursor: default;
+}
+
 .inactive {
   opacity: 0.4;
+  cursor: pointer;
 }
 
 .github-code-link {
@@ -113,4 +119,8 @@ ul {
 .other-weather-info-heading-value {
   font-size: 13px;
   opacity: 0.9;
+}
+
+.unit-partition {
+  cursor: default;
 }
