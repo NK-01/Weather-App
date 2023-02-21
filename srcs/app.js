@@ -47,7 +47,6 @@ function displayTimeDay(response) {
 }
 
 function displayWeatherInformations(response) {
-  //   console.log(response);
   displayTimeDay(response);
   let currentTemperatureElement = document.querySelector(
     "#current-temperature"
@@ -63,7 +62,7 @@ function displayWeatherInformations(response) {
   let realFeel = Math.round(response.data.main.feels_like);
   let humidity = Math.round(response.data.main.humidity);
   let pressure = Math.round(response.data.main.pressure);
-  let windSpeed = Math.round(response.data.wind.speed);
+  let windSpeed = Math.round(response.data.wind.speed * 3.6);
   let weatherIcon = response.data.weather[0].icon;
   let weatherCondition = response.data.weather[0].description;
 
