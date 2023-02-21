@@ -14,8 +14,41 @@ function formatCityName(city) {
   return formattedCityName;
 }
 
+function displayTimeDay(response) {
+  let date = new Date(response.data.dt * 1000);
+  let hours = date.getHours();
+  let minutes = date.getMinutes();
+  let day = date.getDay();
+  let weekDays = [
+    "Sunday",
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+  ];
+
+  let dayElement = document.querySelector("#day");
+  let hoursElement = document.querySelector("#hours");
+  let minutesElement = document.querySelector("#minutes");
+
+  if (hours < 10) {
+    hoursElement.innerHTML = `0${hours}`;
+  } else {
+    hoursElement.innerHTML = `${hours}`;
+  }
+  if (minutes < 10) {
+    minutesElement.innerHTML = `0${minutes}`;
+  } else {
+    minutesElement.innerHTML = `${minutes}`;
+  }
+  dayElement.innerHTML = `${weekDays[day]}`;
+}
+
 function displayWeatherInformations(response) {
-  console.log(response);
+  //   console.log(response);
+  displayTimeDay(response);
   let currentTemperatureElement = document.querySelector(
     "#current-temperature"
   );
@@ -33,6 +66,7 @@ function displayWeatherInformations(response) {
   let windSpeed = Math.round(response.data.wind.speed);
   let weatherIcon = response.data.weather[0].icon;
   let weatherCondition = response.data.weather[0].description;
+
   weatherConditionIcon.setAttribute(
     `src`,
     `http://openweathermap.org/img/wn/${weatherIcon}@2x.png`
