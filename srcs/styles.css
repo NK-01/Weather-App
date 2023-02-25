@@ -33,6 +33,12 @@ ul {
   text-transform: capitalize;
 }
 
+#weather-forecast {
+  text-align: center;
+  margin-top: 22px;
+  margin-bottom: 18px;
+}
+
 .container {
   margin-top: auto;
   margin-right: auto;
@@ -71,6 +77,8 @@ ul {
 
 .search-bar i {
   padding-top: 8px;
+  padding-left: 2px;
+  padding-right: 3px;
   color: rgb(29, 88, 214);
 }
 
@@ -130,17 +138,11 @@ ul {
   line-height: 12px;
 }
 
-.weather-forecast {
-  text-align: center;
-  margin-top: 14px;
-  margin-bottom: 14px;
-}
-
 .weather-forecast-temperature {
   font-size: 13px;
   line-height: 13px;
 }
 
 .weather-forecast-temperature-min {
-  opacity: 0.7;
+  opacity: 0.6;
 }

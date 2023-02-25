@@ -46,6 +46,58 @@ function displayTimeDay(response) {
   dayElement.innerHTML = `${weekDays[day]}`;
 }
 
+function displayWeatherForecast(response) {
+  console.log(response.data.daily);
+  let weatherForecastElement = document.querySelector("#weather-forecast");
+  let dailyForecast = response.data.daily;
+  let weekDay = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+  let forecastHTML = "";
+
+  weatherForecastCelciusMaxTemperature = [];
+  weatherForecastCelciusMinTemperature = [];
+  for (let day = 0; day < 6; ++day) {
+    let date = new Date(dailyForecast[day].dt * 1000);
+
+    weatherForecastCelciusMaxTemperature = Math.round(
+      dailyForecast[day].temp.max
+    );
+    weatherForecastCelciusMinTemperature = Math.round(
+      dailyForecast[day].temp.min
+    );
+
+    forecastHTML =
+      forecastHTML +
+      `
+      <div class="col-2">
+          <div class="day">${weekDay[date.getDay()]}</div>
+            <img
+              class="weather-forecast-image"
+              src="http://openweathermap.org/img/wn/${
+                dailyForecast[day].weather[0].icon
+              }@2x.png"
+              alt="day${day + 1} weather image"
+               width="60"
+            />
+          <div class="weather-forecast-temperature">
+              <span class="weather-forecast-temperature-max">${Math.round(
+                dailyForecast[day].temp.max
+              )}°</span>
+              <span class="weather-forecast-temperature-min">${Math.round(
+                dailyForecast[day].temp.min
+              )}°</span>   
+          </div>
+      </div>`;
+  }
+
+  weatherForecastElement.innerHTML = forecastHTML;
+}
+
+function getForecast(coordinates) {
+  let apiKey = "ed55b36e362d8733f7d859247cedeaf2";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&&appid=${apiKey}&units=metric`;
+  axios.get(apiUrl).then(displayWeatherForecast);
+}
+
 function displayWeatherInformations(response) {
   displayTimeDay(response);
   let currentTemperatureElement = document.querySelector(
@@ -78,6 +130,8 @@ function displayWeatherInformations(response) {
   humidityElement.innerHTML = humidity;
   windSpeedElement.innerHTML = windSpeed;
   pressureElement.innerHTML = pressure;
+
+  getForecast(response.data.coord);
 }
 
 function search(city) {
@@ -152,5 +206,8 @@ celciusElement.addEventListener("click", displayCelciusTemperature);
 let realFeelCelciusTemperature = null;
 let fahrenheitElement = document.querySelector("#fahrenheit");
 fahrenheitElement.addEventListener("click", displayFahrenheitTemperature);
+
+let weatherForecastCelciusMaxTemperature = null;
+let weatherForecastCelciusMinTemperature = null;
 
 search("New Delhi");
