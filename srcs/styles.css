@@ -124,3 +124,23 @@ ul {
 .unit-partition {
   cursor: default;
 }
+
+.day {
+  font-size: 16px;
+  line-height: 12px;
+}
+
+.weather-forecast {
+  text-align: center;
+  margin-top: 14px;
+  margin-bottom: 14px;
+}
+
+.weather-forecast-temperature {
+  font-size: 13px;
+  line-height: 13px;
+}
+
+.weather-forecast-temperature-min {
+  opacity: 0.7;
+}
