@@ -47,7 +47,6 @@ function displayTimeDay(response) {
 }
 
 function displayWeatherForecast(response) {
-  console.log(response.data.daily);
   let weatherForecastElement = document.querySelector("#weather-forecast");
   let dailyForecast = response.data.daily;
   let weekDay = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
@@ -58,12 +57,8 @@ function displayWeatherForecast(response) {
   for (let day = 0; day < 6; ++day) {
     let date = new Date(dailyForecast[day].dt * 1000);
 
-    weatherForecastCelciusMaxTemperature = Math.round(
-      dailyForecast[day].temp.max
-    );
-    weatherForecastCelciusMinTemperature = Math.round(
-      dailyForecast[day].temp.min
-    );
+    weatherForecastCelciusMaxTemperature.push(dailyForecast[day].temp.max);
+    weatherForecastCelciusMinTemperature.push(dailyForecast[day].temp.min);
 
     forecastHTML =
       forecastHTML +
@@ -79,12 +74,12 @@ function displayWeatherForecast(response) {
                width="60"
             />
           <div class="weather-forecast-temperature">
-              <span class="weather-forecast-temperature-max">${Math.round(
-                dailyForecast[day].temp.max
-              )}°</span>
-              <span class="weather-forecast-temperature-min">${Math.round(
-                dailyForecast[day].temp.min
-              )}°</span>   
+              <span class="weather-forecast-temperature-max" id="day${
+                day + 1
+              }-max-temp">${Math.round(dailyForecast[day].temp.max)}°</span>
+              <span class="weather-forecast-temperature-min" id="day${
+                day + 1
+              }-min-temp">${Math.round(dailyForecast[day].temp.min)}°</span>   
           </div>
       </div>`;
   }
@@ -114,9 +109,9 @@ function displayWeatherInformations(response) {
   let realFeel = Math.round(response.data.main.feels_like);
   let humidity = Math.round(response.data.main.humidity);
   let pressure = Math.round(response.data.main.pressure);
-  let windSpeed = Math.round(response.data.wind.speed * 3.6);
   let weatherIcon = response.data.weather[0].icon;
   let weatherCondition = response.data.weather[0].description;
+  windSpeed = response.data.wind.speed * 3.6;
   celciusTemperature = response.data.main.temp;
   realFeelCelciusTemperature = response.data.main.feels_like;
 
@@ -128,7 +123,7 @@ function displayWeatherInformations(response) {
   currentTemperatureElement.innerHTML = currentTemperature;
   realFeelElement.innerHTML = `${realFeel}°C`;
   humidityElement.innerHTML = humidity;
-  windSpeedElement.innerHTML = windSpeed;
+  windSpeedElement.innerHTML = `${Math.round(windSpeed)} kmph`;
   pressureElement.innerHTML = pressure;
 
   getForecast(response.data.coord);
@@ -164,8 +159,27 @@ function displayCelciusTemperature(event) {
   let fahrenheitElement = document.querySelector("#fahrenheit");
   let realFeelElement = document.querySelector("#real-feel");
 
+  // Current Temperature in Celcius
   currentTemperatureElement.innerHTML = Math.round(celciusTemperature);
+  // Real Feel Temeprature in Celcius
   realFeelElement.innerHTML = `${Math.round(realFeelCelciusTemperature)}°C`;
+
+  // Weather Forecast Temeprature in Celcius
+  for (let day = 0; day < 6; ++day) {
+    maxTempElement = document.querySelector(`#day${day + 1}-max-temp`);
+    minTempElement = document.querySelector(`#day${day + 1}-min-temp`);
+
+    maxTempElement.innerHTML = `${Math.round(
+      weatherForecastCelciusMaxTemperature[day]
+    )}°`;
+    minTempElement.innerHTML = `${Math.round(
+      weatherForecastCelciusMinTemperature[day]
+    )}°`;
+  }
+
+  // Wind Speed in km/h
+  let windSpeedElement = document.querySelector("#wind-speed");
+  windSpeedElement.innerHTML = `${Math.round(windSpeed)} kmph`;
 
   celciusElement.classList.add("active");
   celciusElement.classList.remove("inactive");
@@ -185,10 +199,30 @@ function displayFahrenheitTemperature(event) {
     (realFeelCelciusTemperature * 9) / 5 + 32
   );
 
+  // Current Temperature in Fahrenheit
   currentTemperatureElement.innerHTML = Math.round(
     (celciusTemperature * 9) / 5 + 32
   );
+
+  // Real Feel Temperature in Fahrenheit
   realFeelElement.innerHTML = `${realFeelFahrenheitTemperature}°F`;
+
+  // Weather Forcast Temperature in Fahrenheit
+  for (let day = 0; day < 6; ++day) {
+    maxTempElement = document.querySelector(`#day${day + 1}-max-temp`);
+    minTempElement = document.querySelector(`#day${day + 1}-min-temp`);
+
+    maxTempElement.innerHTML = `${Math.round(
+      (weatherForecastCelciusMaxTemperature[day] * 9) / 5 + 32
+    )}°`;
+    minTempElement.innerHTML = `${Math.round(
+      (weatherForecastCelciusMinTemperature[day] * 9) / 5 + 32
+    )}°`;
+  }
+
+  // Wind speed in mph
+  let windSpeedElement = document.querySelector("#wind-speed");
+  windSpeedElement.innerHTML = `${Math.round(windSpeed * 0.621371)} mph`;
 
   fahrenheitElement.classList.add("active");
   fahrenheitElement.classList.remove("inactive");
@@ -209,5 +243,7 @@ fahrenheitElement.addEventListener("click", displayFahrenheitTemperature);
 
 let weatherForecastCelciusMaxTemperature = null;
 let weatherForecastCelciusMinTemperature = null;
+
+let windSpeed = null;
 
 search("New Delhi");
