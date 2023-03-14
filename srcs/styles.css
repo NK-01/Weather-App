@@ -134,6 +134,10 @@ ul {
   font-size: 14px;
 }
 
+.github-code-link a {
+  color: rgb(123, 23, 255);
+}
+
 .other-weather-info-heading {
   font-weight: 500;
   font-size: 15px;
