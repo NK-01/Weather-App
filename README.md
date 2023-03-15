@@ -18,7 +18,7 @@ This is a simple weather app that allows users to get real-time weather updates 
 ## Usage
 To use the app, simply enter a location in the search bar and press the enter key. The app will fetch real-time weather data for the location and display it on the screen.
 
-You can toggle between Celsius and Fahrenheit units by clicking on the temperature value.
+You can toggle between Celsius and Fahrenheit units by selecting the options present beside the current temperature.
 
 You will also need to obtain an API key from the OpenWeather website and replace the apiKey variable in the app.js file (under srcs folder) with your own API key.
 
