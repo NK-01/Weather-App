@@ -22,6 +22,9 @@ You can toggle between Celsius and Fahrenheit units by selecting the options pre
 
 You will also need to obtain an API key from the OpenWeather website and replace the apiKey variable in the app.js file (under srcs folder) with your own API key.
 
+## Click on the link below to explore my project
+👉 [**View my project**](https://gilded-malasada-fb150d.netlify.app/)
+
 ## Credits
 This app was created by Nidhi Kumari. The weather data is provided by the OpenWeather API.
 
